@@ -32,9 +32,9 @@ def check_character_types(password):
     has_symbol = False
     
     for char in password:
-        if char.islowe():
+        if char.islower():
             has_lower = True
-        if char.isipper():
+        if char.isupper():
             has_upper = True
         if char.isdigit():
             has_digit = True
@@ -55,7 +55,7 @@ def check_character_types(password):
     else:
         reasons.append("no digits")
         
-    if has_upper:
+    if has_symbol:
         points += 1
     else:
         reasons.append("no symbols")
@@ -72,4 +72,31 @@ def is_common_password(password):
         common_passwords = file.read().lower().splitlines()
         
     return password.lower() in common_passwords
+
+def score_to_level(score):
+    """Translate a score (0 to 6) into Weak, Medium or Strong."""
+    if score >= 5:
+        return "Strong"
+    elif score >= 3:
+        return "Medium"
+    else:
+        return "Weak"
+
+def evaluate_password(password):
+    '''evaluate a password and return its level and the reasons'''
+    if password.strip() == "":
+        raise ValueError("The password cannot be empty")
     
+    length_points, length_reasons = check_length(password)
+    type_points, type_reasons = check_character_types(password)
+    reasons = length_reasons + type_reasons
+    
+    if len(password) < 8:
+        return "Weak", reasons
+    if is_common_password(password):
+        return "Weak", ["found in the common password list"]
+    
+    score = length_points + type_points
+    
+    return score_to_level(score), reasons
+
