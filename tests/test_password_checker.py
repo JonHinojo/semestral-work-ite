@@ -47,3 +47,31 @@ class TestIsCommonPassword(unittest.TestCase):
 
     def test_uncommon_password(self):
         self.assertFalse(is_common_password("Tr0pical!Sun"))
+        
+        
+class TestScoreToLevel(unittest.TestCase):
+    """Tests for score_to_level."""
+
+    def test_levels(self):
+        self.assertEqual(score_to_level(2), "Weak")
+        self.assertEqual(score_to_level(3), "Medium")
+        self.assertEqual(score_to_level(5), "Strong")
+
+
+class TestEvaluatePassword(unittest.TestCase):
+    """Tests for evaluate_password."""
+
+    def test_empty_password(self):
+        with self.assertRaises(ValueError):
+            evaluate_password("")
+
+    def test_only_spaces(self):
+        with self.assertRaises(ValueError):
+            evaluate_password("   ")
+
+    def test_strong_password(self):
+        self.assertEqual(evaluate_password("Tr0pical!Sun"), ("Strong", []))
+
+
+if __name__ == "__main__":
+    unittest.main()
