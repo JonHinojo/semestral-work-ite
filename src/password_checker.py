@@ -20,7 +20,7 @@ def check_length(password):
     
 def check_character_types(password):
     '''give one point for each type of character in the password
-    
+    !!!!!!SOMEHOW SHORTEN!!!!!!!!!!!
     returns the points (0 to 4) and a list of reasons explaining what is missing'''
     
     points = 0
@@ -45,7 +45,7 @@ def check_character_types(password):
     else:
         reasons.append("no lowercase letters")
         
-    if has_upper:
+    if has_digit:
         points += 1
     else:
         reasons.append("no uppercase letters")
@@ -89,6 +89,8 @@ def evaluate_password(password):
     
     length_points, length_reasons = check_length(password)
     type_points, type_reasons = check_character_types(password)
+    
+    #   ["shorter than 12 characters"] + ["no symbols"]
     reasons = length_reasons + type_reasons
     
     if len(password) < 8:
@@ -96,6 +98,7 @@ def evaluate_password(password):
     if is_common_password(password):
         return "Weak", ["found in the common password list"]
     
+    #   1 (length 10) + 3 (lower, upper, digit) = 4 -> Medium
     score = length_points + type_points
     
     return score_to_level(score), reasons

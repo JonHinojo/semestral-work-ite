@@ -12,12 +12,12 @@ def main():
             level, reasons = evaluate_password(password)
             break
         
-        except ValueError as error:
+        except ValueError as error: # only when spaces or blank
             print(error)
         
-        if reasons:
-            print(level + ": " + "and".join(reasons))
-        else:
+    if reasons:
+            print(level + ": " + " and ".join(reasons))
+    else:
             print(level)
             
 if __name__ == "__main__":
