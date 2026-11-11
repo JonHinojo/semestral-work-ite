@@ -22,3 +22,17 @@ class TestCheckLength(unittest.TestCase):
 
     def test_exactly_12_characters(self):
         self.assertEqual(check_length("abcdefghijkl"), (2, []))
+
+
+class TestCheckCharacterTypes(unittest.TestCase):
+    """Tests for check_character_types."""
+
+    def test_all_types(self):
+        self.assertEqual(check_character_types("Tr0pical!Sun"), (4, []))
+
+    def test_only_lowercase(self):
+        self.assertEqual(
+            check_character_types("hello"),
+            (1, ["no uppercase letters", "no digits", "no symbols"]),
+        )
+
