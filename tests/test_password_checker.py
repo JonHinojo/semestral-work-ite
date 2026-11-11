@@ -2,7 +2,7 @@
 
 import unittest
 from src.password_checker import (
-    check_lenght,
+    check_length,
     check_character_types,
     is_common_password,
     score_to_level,

@@ -45,15 +45,16 @@ def check_character_types(password):
     else:
         reasons.append("no lowercase letters")
         
+    if has_upper:
+        points += 1
+    else:
+        reasons.append("no uppercase letters")
+        
     if has_digit:
         points += 1
     else:
         reasons.append("no digits")
         
-    if has_upper:
-        points += 1
-    else:
-        reasons.append("no uppercase letters")
 
         
     if has_symbol:
