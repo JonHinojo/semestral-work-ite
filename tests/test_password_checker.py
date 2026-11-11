@@ -36,3 +36,14 @@ class TestCheckCharacterTypes(unittest.TestCase):
             (1, ["no uppercase letters", "no digits", "no symbols"]),
         )
 
+class TestIsCommonPassword(unittest.TestCase):
+    """Tests for is_common_password."""
+
+    def test_common_password(self):
+        self.assertTrue(is_common_password("password"))
+
+    def test_common_password_uppercase(self):
+        self.assertTrue(is_common_password("PASSWORD"))
+
+    def test_uncommon_password(self):
+        self.assertFalse(is_common_password("Tr0pical!Sun"))
