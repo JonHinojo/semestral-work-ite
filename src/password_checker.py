@@ -1,0 +1,106 @@
+import string
+import os
+
+"""Functions to evaluate the strength of a password"""
+
+def check_length(password):
+    """Give points based on the length of the password.
+    Returns the points (0 to 2) and a list of reasons
+    explaining what is missing.
+    """
+    length = len(password)
+
+    if length >= 12:
+        return 2, []
+    elif length >= 8:
+        return 1, ["shorter than 12 characters"]
+    else:
+        return 0, ["shorter than 8 characters"]
+    
+    
+def check_character_types(password):
+    '''give one point for each type of character in the password
+    !!!!!!SOMEHOW SHORTEN!!!!!!!!!!!
+    returns the points (0 to 4) and a list of reasons explaining what is missing'''
+    
+    points = 0
+    reasons =[]
+    
+    has_lower = False
+    has_upper = False
+    has_digit = False
+    has_symbol = False
+    
+    for char in password:
+        if char.islower():
+            has_lower = True
+        if char.isupper():
+            has_upper = True
+        if char.isdigit():
+            has_digit = True
+        if char in string.punctuation:
+            has_symbol = True
+    if has_lower:
+        points += 1
+    else:
+        reasons.append("no lowercase letters")
+        
+    if has_digit:
+        points += 1
+    else:
+        reasons.append("no digits")
+        
+    if has_upper:
+        points += 1
+    else:
+        reasons.append("no uppercase letters")
+
+        
+    if has_symbol:
+        points += 1
+    else:
+        reasons.append("no symbols")
+        
+    return points, reasons
+
+
+
+def is_common_password(password):
+    '''return true if the password is in the common list'''
+    file_path = os.path.join(os.path.dirname(__file__), "..","data", "common_passwords.txt")
+    
+    with open(file_path, "r", encoding="utf-8") as file:
+        common_passwords = file.read().lower().splitlines()
+        
+    return password.lower() in common_passwords
+
+def score_to_level(score):
+    """Translate a score (0 to 6) into Weak, Medium or Strong."""
+    if score >= 5:
+        return "Strong"
+    elif score >= 3:
+        return "Medium"
+    else:
+        return "Weak"
+
+def evaluate_password(password):
+    '''evaluate a password and return its level and the reasons'''
+    if password.strip() == "":
+        raise ValueError("The password cannot be empty")
+    
+    length_points, length_reasons = check_length(password)
+    type_points, type_reasons = check_character_types(password)
+    
+    #   ["shorter than 12 characters"] + ["no symbols"]
+    reasons = length_reasons + type_reasons
+    
+    if len(password) < 8:
+        return "Weak", reasons
+    if is_common_password(password):
+        return "Weak", ["found in the common password list"]
+    
+    #   1 (length 10) + 3 (lower, upper, digit) = 4 -> Medium
+    score = length_points + type_points
+    
+    return score_to_level(score), reasons
+
