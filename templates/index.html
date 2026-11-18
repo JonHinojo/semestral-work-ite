@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>Password Strength Checker</h1>
+
+        <form method="post">
+            <input type="password" name="password" placeholder="Enter a password">
+            <button type="submit">Check</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if level %}
+            <div class="bar">
+                <div class="fill {{ level|lower }}"></div>
+            </div>
+            <h2 class="level-{{ level|lower }}">{{ level }}</h2>
+            <ul>
+                {% for reason in reasons %}
+                    <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
