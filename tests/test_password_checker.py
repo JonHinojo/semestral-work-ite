@@ -72,6 +72,17 @@ class TestEvaluatePassword(unittest.TestCase):
     def test_strong_password(self):
         self.assertEqual(evaluate_password("Tr0pical!Sun"), ("Strong", []))
 
+    def test_medium_without_digits(self):
+        self.assertEqual(
+            evaluate_password("SummerTime"),
+            ("Medium", ["shorter than 12 characters", "no digits", "no symbols"]),
+        )
+
+    def test_common_password_is_weak(self):
+        self.assertEqual(
+            evaluate_password("password"),
+            ("Weak", ["found in the common password list"]),
+        )
 
 if __name__ == "__main__":
     unittest.main()
