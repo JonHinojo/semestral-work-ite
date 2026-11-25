@@ -64,5 +64,5 @@ One function per rule and one function that combines the scores. The logic is in
 
 ## Edge cases
 
-- empty input: the program shows an error message and assks again
+- empty input: the program shows an error message. In the terminal it asks again, and in the web the error appears on the page
 - only spaces: treated the same as empty input

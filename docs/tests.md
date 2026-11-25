@@ -7,7 +7,9 @@ To run all of them, I run test_main.py from the main folder of the project.
 
 Length:
 - "abc" has less than 8 characters, so it should get 0 points and the reason "shorter than 8 characters".
+- "abcdefg" has exactly 7 characters, so it should still get 0 points.
 - "abcdefgh" has exactly 8 characters, so it should get 1 point.
+- "abcdefghijk" has exactly 11 characters, so it should still get 1 point.
 - "abcdefghijkl" has exactly 12 characters, so it should get 2 points.
 
 Character types:
@@ -20,7 +22,7 @@ Common passwords:
 - "Tr0pical!Sun" is not in the list.
 
 Score to level:
-- 2 points should be Weak, 3 points should be Medium and 5 points should be Strong. These are the limits between the levels.
+- 2 points should be Weak, 3 and 4 points should be Medium, and 5 and 6 points should be Strong. These are the limits between the levels.
 
 Final result:
 - "Tr0pical!Sun" should be Strong.
@@ -31,8 +33,10 @@ Final result:
 
 ## Why I chose these cases
 
-I tried to test each rule on its own, and also the limits like 8 and 12 characters,
-because that is where it is easy to make mistakes.
+I tried to test each rule on its own, and also the limits of each range,
+because that is where it is easy to make mistakes. For the length, I test
+both sides of each limit: 7 and 8 characters, and 11 and 12 characters.
+For the levels, I test the first and the last score of each level.
 
 The "SummerTime" test is important for me. While I was programming, I swapped the
 uppercase check and the digit check by mistake. When I tested with "Summer2024" I

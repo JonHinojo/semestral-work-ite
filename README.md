@@ -82,6 +82,7 @@ The test plan, with the reasons for each test case, is in docs/tests.md.
 - If the file data/common_passwords.txt is deleted, the program stops with an error.
 - The common password file is read every time a password is checked. This is fine for one password, but it would be slow for many.
 - The web version uses the Flask development server, so it is only for local use, not for a real website.
+- Letters like ñ or á count as lowercase letters, because Python treats them as letters.
 
 ## Credits
 

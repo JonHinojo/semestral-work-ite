@@ -22,6 +22,12 @@ class TestCheckLength(unittest.TestCase):
 
     def test_exactly_12_characters(self):
         self.assertEqual(check_length("abcdefghijkl"), (2, []))
+        
+    def test_exactly_7_characters(self):
+        self.assertEqual(check_length("abcdefg"), (0, ["shorter than 8 characters"]))
+
+    def test_exactly_11_characters(self):
+        self.assertEqual(check_length("abcdefghijk"), (1, ["shorter than 12 characters"]))
 
 
 class TestCheckCharacterTypes(unittest.TestCase):
@@ -56,6 +62,8 @@ class TestScoreToLevel(unittest.TestCase):
         self.assertEqual(score_to_level(2), "Weak")
         self.assertEqual(score_to_level(3), "Medium")
         self.assertEqual(score_to_level(5), "Strong")
+        self.assertEqual(score_to_level(4), "Medium")
+        self.assertEqual(score_to_level(6), "Strong")
 
 
 class TestEvaluatePassword(unittest.TestCase):

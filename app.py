@@ -15,7 +15,7 @@ def home():
     error = None
 
     if request.method == "POST":
-        password = request.form["password"]
+        password = request.form.get("password", "")
         try:
             level, reasons = evaluate_password(password)
         except ValueError as e:
