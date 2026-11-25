@@ -4,7 +4,7 @@
 A command line tool that tells the user whether a password is weak, medium or strong, and explains why.
 
 **Input**  
-One password typed in the terminal.
+One password, typed in the terminal or in a web form.
 
 **Output**  
 A strength level (weak, medium or strong) and the reasons behind it.  
@@ -20,7 +20,7 @@ Example: `Weak: shorter than 8 characters and no symbols`
 6. Show the level and the reasons for any missing points.
 
 **Structure**  
-One function per rule and one function that combines the scores. The flow is shown with a UML activity diagram.
+One function per rule and one function that combines the scores. The logic is in src/password_checker.py, and it is used by two interfaces: main.py for the terminal and app.py for the web, made with Flask. The flow is shown with a UML activity diagram.
 
 **Tests**
 
@@ -51,7 +51,7 @@ One function per rule and one function that combines the scores. The flow is sho
 
 ### Common passwords
 
-- if the password is in the common password list, it is always Weak
+- If the password is in the common password list, it is always Weak
 - The check ignores uppercase and lowercase (PASSWORD = password)
 
 ### Score to level
@@ -65,4 +65,4 @@ One function per rule and one function that combines the scores. The flow is sho
 ## Edge cases
 
 - empty input: the program shows an error message and assks again
-- only spaces; treated the same as empty input
+- only spaces: treated the same as empty input

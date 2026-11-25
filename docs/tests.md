@@ -6,7 +6,7 @@ To run all of them, I run test_main.py from the main folder of the project.
 ## What I test
 
 Length:
-- "abc" has less than 8 characters, so it should be Weak.
+- "abc" has less than 8 characters, so it should get 0 points and the reason "shorter than 8 characters".
 - "abcdefgh" has exactly 8 characters, so it should get 1 point.
 - "abcdefghijkl" has exactly 12 characters, so it should get 2 points.
 
@@ -18,6 +18,9 @@ Common passwords:
 - "password" is in the list, so it should be found.
 - "PASSWORD" should also be found, because the check does not care about uppercase or lowercase.
 - "Tr0pical!Sun" is not in the list.
+
+Score to level:
+- 2 points should be Weak, 3 points should be Medium and 5 points should be Strong. These are the limits between the levels.
 
 Final result:
 - "Tr0pical!Sun" should be Strong.
