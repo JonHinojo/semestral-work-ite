@@ -7,7 +7,7 @@ def main():
     '''asks for a password and then show what its strenght is'''
     
     while True:
-        password = input ("Enter a passwrod: ")
+        password = input ("Enter a password: ")
         try:
             level, reasons = evaluate_password(password)
             break
