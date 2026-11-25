@@ -21,7 +21,7 @@ Every time a rule does not give all its points, the program says what is missing
 
 The full flow is shown in this UML activity diagram:
 
-docs/diagrams/activity_diagram.drawio
+![Activity diagram](docs/diagrams/activity_diagram.png)
 
 More details about the design are in docs/notes.md.
 
