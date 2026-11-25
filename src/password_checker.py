@@ -1,7 +1,8 @@
+"""Functions to evaluate the strength of a password"""
+
 import string
 import os
 
-"""Functions to evaluate the strength of a password"""
 
 def check_length(password):
     """Give points based on the length of the password.
@@ -19,9 +20,11 @@ def check_length(password):
     
     
 def check_character_types(password):
-    '''give one point for each type of character in the password
-    !!!!!!SOMEHOW SHORTEN!!!!!!!!!!!
-    returns the points (0 to 4) and a list of reasons explaining what is missing'''
+    """Give one point for each type of character in the password.
+    
+    Returns the points (0 to 4) and a list of reasons
+    explaining what is missing.
+    """
     
     points = 0
     reasons =[]

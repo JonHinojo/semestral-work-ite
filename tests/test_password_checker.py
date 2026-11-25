@@ -64,7 +64,7 @@ class TestScoreToLevel(unittest.TestCase):
         self.assertEqual(score_to_level(5), "Strong")
         self.assertEqual(score_to_level(4), "Medium")
         self.assertEqual(score_to_level(6), "Strong")
-
+        self.assertEqual(score_to_level(0), "Weak")
 
 class TestEvaluatePassword(unittest.TestCase):
     """Tests for evaluate_password."""

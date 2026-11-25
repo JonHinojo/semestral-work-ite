@@ -8,8 +8,7 @@ Example: "Summer2024" gives "Medium: shorter than 12 characters and no symbols".
 ## How it works
 
 First, the program checks some filters:
-- If the password is empty or only has spaces, it shows an error and asks again.
-- If it has less than 8 characters, it is Weak.
+- If the password is empty or only has spaces, it shows an error. The terminal version asks again, and the web version shows the error on the page.- If it has less than 8 characters, it is Weak.
 - If it is in a list of common passwords, it is Weak.
 
 If the password passes the filters, it gets points:
